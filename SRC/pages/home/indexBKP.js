@@ -187,11 +187,6 @@ export function Home() {
         <Text style={styles.buttonText}>Gerar Senha</Text>
       </TouchableOpacity>
 
-      {/* Botão com estilo diferente logo abaixo */}
-      <TouchableOpacity style={styles.buttonSecondary} onPress={() => navigation.navigate('Passwords')}>
-        <Text style={styles.buttonSecondaryText}>Ir para Minhas Senhas</Text>
-      </TouchableOpacity>
-
       {/* Modal único */}
       <Modal visible={modalVisible} animationType='fade' transparent={true}>
         <ModalPassword password={passwordValue} handleClose={() => setModalVisible(false)} />
@@ -214,27 +209,30 @@ export function Home() {
         </View>
       )}
 
-    
+      <FlatList
+        style={{ width: '90%', marginTop: 20 }}
+        data={passwords}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={{ backgroundColor: '#FFF', padding: 10, marginVertical: 5, borderRadius: 5, elevation: 2 }}>
+            <Text style={{ fontWeight: 'bold' }}>{item.text}</Text>
+            <Text selectable>{item.password}</Text>
+          </View>
+        )}
+      />
+
+      {/* Botão para navegar até tela de senhas salvas */}
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Passwords')}>
+        <Text style={styles.buttonText}>Ir para Minhas Senhas</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    backgroundColor: '#F0F0F5', 
-    paddingTop: 50 
-  },
-  logo: { 
-    marginBottom: 20 
-  },
-  title: { 
-    fontSize: 24, 
-    fontWeight: 'bold', 
-    marginBottom: 10 
-  },
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F0F0F5', paddingTop: 50 },
+  logo: { marginBottom: 20 },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 10 },
   input: {
     backgroundColor: '#0887e1',
     width: '80%',
@@ -246,7 +244,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   button: {
-    backgroundColor: '#0887e1', // azul padrão
+    backgroundColor: '#0887e1',
     width: '80%',
     height: 50,
     borderRadius: 8,
@@ -254,24 +252,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 10,
   },
-  buttonText: { 
-    color: '#FFF', 
-    fontSize: 18, 
-    fontWeight: 'bold' 
-  },
-  // Botão secundário para "Ir para Minhas Senhas"
-  buttonSecondary: {
-    backgroundColor: '#34a853', // verde para diferenciar
-    width: '80%',
-    height: 50,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 10,
-  },
-  buttonSecondaryText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold'
-  }
+  buttonText: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
 });
