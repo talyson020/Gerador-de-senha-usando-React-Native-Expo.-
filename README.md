@@ -28,6 +28,12 @@ npm install
 
 # Rodar no Expo Go
 npx expo start
+![1](https://github.com/user-attachments/assets/c52965e2-0e40-4f54-9cd1-31e1999611d7)
+![2](https://github.com/user-attachments/assets/fd65bcb7-5d03-4a58-8e58-916292235230)
+![3](https://github.com/user-attachments/assets/26cd9ebd-3b1d-4fbc-8fa6-6a19321337a8)
+![4](https://github.com/user-attachments/assets/42ce62b4-06cf-413b-953c-016faa9a25b6)
+
+
 
 
 
